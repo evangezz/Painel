@@ -4,60 +4,57 @@
 <head>
   <meta charset="UTF-8">
   <title>Painel Ebenézer</title>
-  <script>
-    const senha = "kbemol";
-    const entrada = prompt("Digite a senha para acessar o Painel Ebenézer:");
-    if (entrada !== senha) {
-      document.write("<h1 style='text-align:center;margin-top:20%;'>Senha incorreta. Acesso negado.</h1>");
-      throw new Error("Acesso negado.");
-    }
-  </script>
   <style>
     body { font-family: sans-serif; background: #111; color: #fff; padding: 2rem; }
     h1 { color: #ffd700; }
     section { background: #222; padding: 1rem; margin-bottom: 2rem; border-radius: 10px; }
-    a { display: block; margin: 5px 0; color: #4FC3F7; font-weight: bold; text-decoration: none; }
-    a:hover { text-decoration: underline; }
     .progress-container { background: #333; border-radius: 10px; overflow: hidden; margin-top: 4px; }
     .progress-bar { padding: 4px; text-align: center; color: #000; font-weight: bold; }
+    a { display: block; margin: 5px 0; color: #4FC3F7; text-decoration: none; font-weight: bold; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <h1>🎵 Painel Ebenézer - Projetos</h1>
 
   <section>
-    <h2>🥁 Curso de Bateria</h2>
-    <a href="Modulo1_Bateria_Didatico.pdf" download>Baixar PDF - Módulo 1</a>
+    <h2>📊 Progresso em Tempo Real</h2>
+    <div id="progresso"></div>
   </section>
 
   <section>
-    <h2>⚽ Projeto Bet365</h2>
-    <a href="bet365-alert-app-completo.zip" download>Baixar Projeto Completo (ZIP)</a>
+    <h2>📂 Downloads</h2>
+    <a href="Modulo1_Bateria_Didatico.pdf" download>🥁 Baixar PDF - Módulo 1</a>
+    <a href="bet365-alert-app-completo.zip" download>⚽ Baixar Projeto Bet365 (ZIP)</a>
+    <a href="PROJETOS_COMPLETOS_FINALIZADOS.zip" download>📥 Baixar Todos os Projetos (ZIP)</a>
   </section>
 
-  <section>
-    <h2>📥 Todos os Projetos</h2>
-    <a href="PROJETOS_COMPLETOS_FINALIZADOS.zip" download>Download Total (ZIP)</a>
-  </section>
+  <script>
+    async function carregarProgresso() {
+      const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_Ln4GmZ9VVjHAgC4sEKIY-FLUMaYlKeJuLaOs7G0O0SCODjaIqZxgfTTzQ5mjsiyxIm8Nq-Sfl7Hh/pub?output=tsv";
+      const res = await fetch(sheetURL);
+      const text = await res.text();
+      const linhas = text.trim().split("\n").slice(1);
 
-  <section>
-    <h2>📊 Projetos em Andamento</h2>
+      const container = document.getElementById("progresso");
+      container.innerHTML = "";
 
-    <div style="margin-bottom: 1rem;">
-      <strong>🎸 Módulo 2 – Curso de Contrabaixo</strong>
-      <div class="progress-container">
-        <div class="progress-bar" style="width: 48%; background: #4FC3F7;">48%</div>
-      </div>
-      <small>🔄 Em andamento</small>
-    </div>
+      linhas.forEach(linha => {
+        const [projeto, valor] = linha.split("\t");
+        const p = parseInt(valor.trim());
+        container.innerHTML += `
+          <div style="margin-bottom: 1rem;">
+            <strong>${projeto}</strong>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: ${p}%; background: #4FC3F7;">${p}%</div>
+            </div>
+            <small>🔄 Atualizado via planilha</small>
+          </div>
+        `;
+      });
+    }
 
-    <div style="margin-bottom: 1rem;">
-      <strong>🤖 APK IA Valentina</strong>
-      <div class="progress-container">
-        <div class="progress-bar" style="width: 76%; background: #FFD54F;">76%</div>
-      </div>
-      <small>🔄 Em desenvolvimento</small>
-    </div>
-  </section>
+    carregarProgresso();
+  </script>
 </body>
 </html>
