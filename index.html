@@ -31,7 +31,7 @@
 
   <script>
     async function carregarProgresso() {
-      const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_Ln4GmZ9VVjHAgC4sEKIY-FLUMaYlKeJuLaOs7G0O0SCODjaIqZxgfTTzQ5mjsiyxIm8Nq-Sfl7Hh/pub?output=tsv";
+      const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS8RpbkQzwBMLczdD_8S-JBKoauVq5APn4AfTQ-zE_Hg74vcTA_wqCwIDqtr7_2grH4tq0gJJnJxvNS/pub?output=tsv";
       const res = await fetch(sheetURL);
       const text = await res.text();
       const linhas = text.trim().split("\n").slice(1);
