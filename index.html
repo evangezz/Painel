@@ -18,6 +18,8 @@
     section { background: #222; padding: 1rem; margin-bottom: 2rem; border-radius: 10px; }
     a { display: block; margin: 5px 0; color: #4FC3F7; font-weight: bold; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .progress-container { background: #333; border-radius: 10px; overflow: hidden; margin-top: 4px; }
+    .progress-bar { padding: 4px; text-align: center; color: #000; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -36,6 +38,26 @@
   <section>
     <h2>📥 Todos os Projetos</h2>
     <a href="PROJETOS_COMPLETOS_FINALIZADOS.zip" download>Download Total (ZIP)</a>
+  </section>
+
+  <section>
+    <h2>📊 Projetos em Andamento</h2>
+
+    <div style="margin-bottom: 1rem;">
+      <strong>🎸 Módulo 2 – Curso de Contrabaixo</strong>
+      <div class="progress-container">
+        <div class="progress-bar" style="width: 48%; background: #4FC3F7;">48%</div>
+      </div>
+      <small>🔄 Em andamento</small>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <strong>🤖 APK IA Valentina</strong>
+      <div class="progress-container">
+        <div class="progress-bar" style="width: 76%; background: #FFD54F;">76%</div>
+      </div>
+      <small>🔄 Em desenvolvimento</small>
+    </div>
   </section>
 </body>
 </html>
