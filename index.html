@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Ebenézer</title>
+  <script>
+    const senha = "kbemol";
+    const entrada = prompt("Digite a senha para acessar o Painel Ebenézer:");
+    if (entrada !== senha) {
+      document.write("<h1 style='text-align:center;margin-top:20%;'>Senha incorreta. Acesso negado.</h1>");
+      throw new Error("Acesso negado.");
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; padding: 2rem; }
+    h1 { color: #ffd700; }
+    section { background: #222; padding: 1rem; margin-bottom: 2rem; border-radius: 10px; }
+    a { display: block; margin: 5px 0; color: #4FC3F7; font-weight: bold; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>🎵 Painel Ebenézer - Projetos</h1>
+
+  <section>
+    <h2>🥁 Curso de Bateria</h2>
+    <a href="Modulo1_Bateria_Didatico.pdf" download>Baixar PDF - Módulo 1</a>
+  </section>
+
+  <section>
+    <h2>⚽ Projeto Bet365</h2>
+    <a href="bet365-alert-app-completo.zip" download>Baixar Projeto Completo (ZIP)</a>
+  </section>
+
+  <section>
+    <h2>📥 Todos os Projetos</h2>
+    <a href="PROJETOS_COMPLETOS_FINALIZADOS.zip" download>Download Total (ZIP)</a>
+  </section>
+</body>
+</html>
